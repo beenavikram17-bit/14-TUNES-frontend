@@ -1,0 +1,505 @@
+/* =====================================
+   14 TUNES CONTACT SUCCESS PAGE
+===================================== */
+
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+
+body{
+
+
+    min-height:100vh;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    overflow:hidden;
+
+
+    font-family:'Poppins',sans-serif;
+
+
+
+    background:
+
+
+    radial-gradient(
+
+        circle at top left,
+
+        #004cff,
+
+        transparent 35%
+
+    ),
+
+
+    radial-gradient(
+
+        circle at bottom right,
+
+        #00c8ff,
+
+        transparent 35%
+
+    ),
+
+
+    linear-gradient(
+
+        135deg,
+
+        #000,
+
+        #07182e,
+
+        #001020
+
+    );
+
+
+
+}
+
+
+
+
+/* Moving Background Light */
+
+
+body::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:500px;
+
+
+    height:500px;
+
+
+    background:
+
+
+    radial-gradient(
+
+        circle,
+
+        rgba(0,170,255,.35),
+
+        transparent 70%
+
+    );
+
+
+
+    top:-150px;
+
+    left:-150px;
+
+
+
+    animation:
+
+    moveLight 8s infinite alternate;
+
+
+
+}
+
+
+
+
+@keyframes moveLight{
+
+
+    from{
+
+        transform:translate(0,0);
+
+    }
+
+
+    to{
+
+        transform:translate(250px,200px);
+
+    }
+
+}
+
+
+
+
+
+/* Main Card */
+
+
+.success-box{
+
+
+    width:450px;
+
+
+    padding:40px;
+
+
+    text-align:center;
+
+
+    color:white;
+
+
+
+    background:
+
+    rgba(255,255,255,.12);
+
+
+
+    backdrop-filter:blur(15px);
+
+
+
+    border-radius:25px;
+
+
+
+    border:
+
+    1px solid rgba(255,255,255,.25);
+
+
+
+    box-shadow:
+
+
+    0 0 40px rgba(0,170,255,.7);
+
+
+
+    animation:
+
+    showBox 1s ease;
+
+
+
+    position:relative;
+
+
+    z-index:5;
+
+
+}
+
+
+
+
+
+@keyframes showBox{
+
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        scale(.8)
+        translateY(40px);
+
+    }
+
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        scale(1)
+        translateY(0);
+
+    }
+
+}
+
+
+
+
+
+/* Check Animation */
+
+
+.check{
+
+
+    width:85px;
+
+
+    height:85px;
+
+
+    margin:auto;
+
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+
+    border-radius:50%;
+
+
+
+    background:#00cc66;
+
+
+
+    font-size:55px;
+
+
+
+    animation:
+
+
+    pop .8s ease,
+
+
+    glow 2s infinite alternate;
+
+
+
+}
+
+
+
+
+
+@keyframes pop{
+
+
+    from{
+
+        transform:scale(0);
+
+    }
+
+
+    to{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+@keyframes glow{
+
+
+    from{
+
+        box-shadow:0 0 10px #00ff66;
+
+    }
+
+
+    to{
+
+        box-shadow:0 0 35px #00ff66;
+
+    }
+
+}
+
+
+
+
+
+h1{
+
+
+    margin-top:25px;
+
+
+    font-size:32px;
+
+
+    letter-spacing:3px;
+
+
+    text-shadow:
+
+    0 0 15px #00ccff;
+
+
+
+}
+
+
+
+h2{
+
+
+    color:#00ccff;
+
+
+    letter-spacing:4px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.message-box{
+
+
+    padding:20px;
+
+
+    border-radius:15px;
+
+
+
+    background:
+
+    rgba(255,255,255,.1);
+
+
+
+    line-height:1.7;
+
+
+}
+
+
+
+.message-box span{
+
+
+    color:#00ccff;
+
+
+    font-size:22px;
+
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+
+.tagline{
+
+
+    margin:25px;
+
+
+    color:#ddd;
+
+
+    font-style:italic;
+
+
+}
+
+
+
+
+
+a{
+
+
+    display:inline-block;
+
+
+    padding:12px 30px;
+
+
+
+    border-radius:30px;
+
+
+
+    text-decoration:none;
+
+
+    color:white;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        45deg,
+
+        #0066ff,
+
+        #00ccff
+
+    );
+
+
+
+    transition:.3s;
+
+
+
+}
+
+
+
+
+a:hover{
+
+
+    transform:scale(1.05);
+
+
+
+    box-shadow:
+
+    0 0 25px #00ccff;
+
+
+}

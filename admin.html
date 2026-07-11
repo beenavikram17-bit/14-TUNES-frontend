@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<script>
+
+if(localStorage.getItem("adminLogin") !== "true"){
+
+    alert("Please login first.");
+
+    window.location.href = "admin-login.html";
+
+}
+
+</script>
+
+<meta charset="UTF-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<title>
+14 TUNES Admin Panel
+</title>
+
+
+
+
+<link rel="stylesheet" href="style/admin.css">
+
+<link rel="stylesheet" href="style/responsive.css">
+
+</head>
+
+
+
+
+
+<body>
+
+
+
+
+
+<!-- MOBILE MENU BUTTON -->
+
+
+<button class="menu-btn" id="menuBtn">
+
+☰
+
+</button>
+
+
+
+
+
+
+<!-- SIDEBAR OVERLAY -->
+
+
+<div class="sidebar-overlay" id="overlay"></div>
+
+
+
+
+
+
+
+
+<!-- ADMIN SIDEBAR -->
+
+
+<aside class="admin-sidebar" id="sidebar">
+
+
+
+<div class="admin-logo">
+
+14 TUNES
+
+</div>
+
+
+
+
+
+
+<ul>
+
+
+
+<li>
+
+<a href="admin.html" class="active">
+
+👥 Users
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="admin-settings.html">
+
+⚙ Settings
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="logout.html">
+
+🚪 Logout
+
+</a>
+
+</li>
+
+
+
+
+</ul>
+
+
+
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- LOGIN PROTECTION -->
+
+
+<script>
+
+
+if(localStorage.getItem("adminLogin") !== "true"){
+
+
+window.location.href="admin-login.html";
+
+
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<!-- ADMIN CONTENT -->
+
+
+<div class="admin-box">
+
+
+
+
+
+
+<a href="home.html" class="back-home">
+
+← Back to Home
+
+</a>
+
+
+
+
+
+
+
+<h1>
+
+👥 14 TUNES USER MANAGEMENT
+
+</h1>
+
+
+
+
+
+
+
+<h2>
+
+Registered Users
+
+</h2>
+
+
+
+
+
+
+
+
+
+<!-- SEARCH BOX -->
+
+
+<div class="search-box">
+
+
+<input
+
+type="text"
+
+id="searchInput"
+
+placeholder="Search Users">
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- USER TABLE -->
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Name
+</th>
+
+
+
+<th>
+Age
+</th>
+
+
+
+<th>
+Gender
+</th>
+
+
+
+<th>
+Role
+</th>
+
+
+
+<th>
+Phone Number
+</th>
+
+
+
+<th>
+Address
+</th>
+
+
+
+<th>
+Status
+</th>
+
+
+
+<th>
+Action
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+
+
+<tbody id="userList">
+
+
+
+</tbody>
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<div id="noUsers" style="text-align:center;margin-top:20px;">
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- JAVASCRIPT -->
+
+
+<script src="js/admin.js"></script>
+
+
+
+</body>
+
+
+</html>

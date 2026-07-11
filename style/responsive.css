@@ -1,0 +1,450 @@
+/* =====================================
+        14 TUNES RESPONSIVE DESIGN
+        MOBILE + TABLET SUPPORT
+===================================== */
+
+
+
+*{
+
+    box-sizing:border-box;
+
+}
+
+
+
+
+
+img{
+
+    max-width:100%;
+
+}
+
+
+
+
+
+
+/* ===============================
+        ADMIN MOBILE MENU
+================================ */
+
+
+
+.menu-btn{
+
+
+    display:none;
+
+
+    position:fixed;
+
+
+    top:20px;
+
+
+    left:20px;
+
+
+    z-index:1001;
+
+
+    width:50px;
+
+
+    height:50px;
+
+
+    border:none;
+
+
+    border-radius:50%;
+
+
+
+    background:
+
+    linear-gradient(
+        45deg,
+        #008cff,
+        #00ddff
+    );
+
+
+
+    color:white;
+
+
+    font-size:25px;
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+
+
+
+
+@media(max-width:850px){
+
+
+
+.menu-btn{
+
+
+    display:block;
+
+
+}
+
+
+
+
+
+
+.admin-sidebar{
+
+
+    position:fixed;
+
+
+    left:-280px;
+
+
+    top:0;
+
+
+    width:260px;
+
+
+    height:100vh;
+
+
+    z-index:1000;
+
+
+    transition:.4s;
+
+
+
+}
+
+
+
+
+
+
+.admin-sidebar.active{
+
+
+    left:0;
+
+
+}
+
+
+
+
+
+
+
+.sidebar-overlay{
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    background:
+
+    rgba(0,0,0,.3);
+
+
+
+    display:none;
+
+
+    z-index:999;
+
+
+}
+
+
+
+
+
+
+.sidebar-overlay.active{
+
+
+    display:block;
+
+
+}
+
+
+
+
+
+
+
+
+
+.admin-box{
+
+
+    width:95%;
+
+
+    margin:90px auto 20px;
+
+
+    padding:20px;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+.admin-box h1{
+
+
+    font-size:28px;
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+
+
+
+
+/* ===============================
+        TABLE MOBILE VIEW
+================================ */
+
+
+
+table{
+
+
+    display:block;
+
+
+    overflow-x:auto;
+
+
+    white-space:nowrap;
+
+
+    width:100%;
+
+
+
+}
+
+
+
+
+
+th,
+td{
+
+
+    padding:12px;
+
+
+
+    font-size:14px;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+        REGISTER PAGE
+================================ */
+
+
+
+.register-box{
+
+
+    width:92%;
+
+
+    padding:25px;
+
+
+    margin:30px auto;
+
+
+
+}
+
+
+
+
+
+
+
+.register-box h2{
+
+
+    font-size:25px;
+
+
+}
+
+
+
+
+
+
+
+
+
+input,
+textarea,
+select{
+
+
+    font-size:16px;
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ===============================
+        SETTINGS PAGE
+================================ */
+
+
+
+.settings-card{
+
+
+    padding:20px;
+
+
+
+}
+
+
+
+
+
+
+.settings-box h1{
+
+
+    font-size:30px;
+
+
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+/* ===============================
+        SMALL PHONES
+================================ */
+
+
+
+@media(max-width:480px){
+
+
+
+.admin-box{
+
+
+    padding:15px;
+
+
+}
+
+
+
+
+
+
+h1{
+
+
+    font-size:25px;
+
+
+}
+
+
+
+
+
+
+
+button{
+
+
+    width:100%;
+
+
+}
+
+
+
+
+
+.social-icons{
+
+
+    gap:15px;
+
+
+}
+
+
+
+}

@@ -1,0 +1,417 @@
+/* =================================
+   14 TUNES CONTACT PAGE CSS
+================================= */
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-family:'Poppins',sans-serif;
+
+    overflow:auto;
+
+
+    background:
+
+    radial-gradient(
+        circle at top left,
+        #004cff,
+        transparent 35%
+    ),
+
+    radial-gradient(
+        circle at bottom right,
+        #00c8ff,
+        transparent 35%
+    ),
+
+    linear-gradient(
+        135deg,
+        #000000,
+        #07182e,
+        #001020
+    );
+
+
+}
+
+
+/* Contact Card */
+
+
+.contact-box{
+
+
+    width:900px;
+
+    padding:40px;
+
+
+    border-radius:25px;
+
+
+    background:
+
+    rgba(255,255,255,0.12);
+
+
+    backdrop-filter:blur(15px);
+
+
+    border:
+
+    1px solid rgba(255,255,255,0.25);
+
+
+    box-shadow:
+
+    0 0 40px rgba(0,170,255,0.6);
+
+
+    color:white;
+
+
+    animation:
+
+    showPage 1s ease;
+
+}
+
+
+
+@keyframes showPage{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* Back Home */
+
+
+.back-home{
+
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:16px;
+
+    display:inline-block;
+
+    margin-bottom:20px;
+
+    transition:.3s;
+
+
+}
+
+
+.back-home:hover{
+
+
+    color:#00ccff;
+
+    transform:translateX(-5px);
+
+
+}
+
+
+
+/* Heading */
+
+
+.contact-box h1{
+
+
+    text-align:center;
+
+    font-size:38px;
+
+    letter-spacing:4px;
+
+    text-shadow:
+
+    0 0 15px #00ccff;
+
+
+}
+
+
+
+.intro{
+
+
+    text-align:center;
+
+    margin:15px 0 30px;
+
+    font-size:18px;
+
+    color:#ddd;
+
+}
+
+
+
+/* Contact Details */
+
+
+.contact-details{
+
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+.contact-details h2{
+
+
+    color:#00ccff;
+
+    margin-bottom:15px;
+
+    letter-spacing:2px;
+
+
+}
+
+
+
+.contact-details p{
+
+
+    margin:12px;
+
+    font-size:17px;
+
+}
+
+
+
+/* WhatsApp Link */
+
+
+.contact-details a{
+
+
+    color:#00ff88;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+
+}
+
+
+.contact-details a:hover{
+
+
+    text-shadow:
+
+    0 0 10px #00ff88;
+
+
+}
+
+
+
+/* Form */
+
+
+form{
+
+
+    display:flex;
+
+    flex-direction:column;
+
+
+}
+
+
+
+input,
+textarea{
+
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:15px;
+
+
+    border:none;
+
+    outline:none;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(255,255,255,0.15);
+
+
+    color:white;
+
+
+    font-size:16px;
+
+
+}
+
+
+
+input::placeholder,
+textarea::placeholder{
+
+
+    color:#ddd;
+
+
+}
+
+
+
+input:focus,
+textarea:focus{
+
+
+    box-shadow:
+
+    0 0 15px #00ccff;
+
+
+}
+
+
+
+textarea{
+
+
+    height:120px;
+
+    resize:none;
+
+
+}
+
+
+
+/* Button */
+
+
+button{
+
+
+    padding:15px;
+
+
+    border:none;
+
+
+    border-radius:30px;
+
+
+    background:
+
+    linear-gradient(
+        45deg,
+        #0066ff,
+        #00ccff
+    );
+
+
+    color:white;
+
+
+    font-size:18px;
+
+    font-weight:bold;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+button:hover{
+
+
+    transform:scale(1.05);
+
+
+    box-shadow:
+
+    0 0 30px #00ccff;
+
+
+}
+
+
+
+/* Mobile Responsive */
+
+
+@media(max-width:950px){
+
+
+    .contact-box{
+
+
+        width:90%;
+
+        padding:25px;
+
+
+    }
+
+
+}

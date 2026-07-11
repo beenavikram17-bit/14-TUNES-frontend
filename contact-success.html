@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>14 TUNES - Message Sent</title>
+
+<link rel="stylesheet" href="style/contact-success.css">
+<link rel="stylesheet" href="responsive.css">
+</head>
+
+
+<body>
+
+
+<div class="success-box">
+
+
+    <div class="check">
+        ✓
+    </div>
+
+
+    <h1>
+        MESSAGE SENT
+    </h1>
+
+
+    <h2>
+        SUCCESSFULLY
+    </h2>
+
+
+
+    <div class="message-box">
+
+        <p id="userName"></p>
+
+        <p>
+            Your message has been received by
+            <br>
+            <b>14 TUNES Productions</b>
+        </p>
+
+        <p>
+            Our team will get back to you soon.
+        </p>
+
+    </div>
+
+
+
+    <p class="tagline">
+
+        "A Promise Never Dies" 🎬
+
+    </p>
+
+
+
+    <a href="home.html">
+
+        ← Back to Home
+
+    </a>
+
+
+
+</div>
+
+
+
+
+<script>
+
+const name = localStorage.getItem("contactName");
+
+
+if(name){
+
+    document.getElementById("userName").innerHTML =
+    "Thank you, <span>" + name + "</span>!";
+
+}
+
+else{
+
+    document.getElementById("userName").innerHTML =
+    "Thank you for contacting us!";
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>

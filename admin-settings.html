@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+
+<meta charset="UTF-8">
+
+
+<meta 
+name="viewport" 
+content="width=device-width, initial-scale=1.0">
+
+
+
+<title>
+14 TUNES Admin Settings
+</title>
+
+
+
+
+<link rel="stylesheet" href="style/admin.css">
+
+<link rel="stylesheet" href="style/admin-settings.css">
+
+<link rel="stylesheet" href="responsive.css">
+
+
+</head>
+
+
+
+
+
+<body>
+
+
+
+
+
+<!-- MOBILE MENU BUTTON -->
+
+
+<button class="menu-btn" id="menuBtn">
+
+☰
+
+</button>
+
+
+
+
+
+
+<!-- OVERLAY -->
+
+
+<div class="sidebar-overlay" id="overlay"></div>
+
+
+
+
+
+
+
+
+<!-- ADMIN SIDEBAR -->
+
+
+<aside class="admin-sidebar" id="sidebar">
+
+
+
+<div class="admin-logo">
+
+14 TUNES
+
+</div>
+
+
+
+
+
+
+<ul>
+
+
+
+<li>
+
+<a href="admin.html">
+
+👥 Users
+
+</a>
+
+</li>
+
+
+
+
+
+
+<li>
+
+<a href="admin-settings.html" class="active">
+
+⚙ Settings
+
+</a>
+
+</li>
+
+
+
+
+
+
+
+<li>
+
+<a href="logout.html">
+
+🚪 Logout
+
+</a>
+
+</li>
+
+
+
+</ul>
+
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- LOGIN CHECK -->
+
+
+<script>
+
+
+if(localStorage.getItem("adminLogin") !== "true"){
+
+
+window.location.href="admin-login.html";
+
+
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<!-- SETTINGS CONTENT -->
+
+
+<div class="admin-box settings-box">
+
+
+
+
+
+<a href="home.html" class="back-home">
+
+← Back to Home
+
+</a>
+
+
+
+
+
+
+
+<h1>
+
+⚙️ Admin Settings
+
+</h1>
+
+
+
+
+
+
+
+<!-- ADMIN PROFILE -->
+
+
+<div class="settings-card">
+
+
+
+<h2>
+
+Admin Profile
+
+</h2>
+
+
+
+
+<label>
+
+Admin Name
+
+</label>
+
+
+
+<input
+
+type="text"
+
+id="adminName"
+
+placeholder="Enter Admin Name">
+
+
+
+
+
+
+
+<label>
+
+Email
+
+</label>
+
+
+
+<input
+
+type="email"
+
+id="adminEmail"
+
+placeholder="Enter Email">
+
+
+
+
+
+
+
+<button id="saveProfile">
+
+Save Profile
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- PASSWORD CHANGE -->
+
+
+<div class="settings-card">
+
+
+
+<h2>
+
+Change Password
+
+</h2>
+
+
+
+
+
+<label>
+
+Current Password
+
+</label>
+
+
+<input
+
+type="password"
+
+id="oldPassword"
+
+placeholder="Current Password">
+
+
+
+
+
+
+<label>
+
+New Password
+
+</label>
+
+
+<input
+
+type="password"
+
+id="newPassword"
+
+placeholder="New Password">
+
+
+
+
+
+
+
+<button id="changePassword">
+
+Update Password
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- WEBSITE SETTINGS -->
+
+
+<div class="settings-card">
+
+
+
+<h2>
+
+Website Control
+
+</h2>
+
+
+
+
+<label>
+
+Website Status
+
+</label>
+
+
+
+
+<select id="siteStatus">
+
+
+<option>
+
+Active
+
+</option>
+
+
+<option>
+
+Maintenance
+
+</option>
+
+
+</select>
+
+
+
+
+
+
+<button id="saveWebsite">
+
+Save Settings
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script src="js/admin-settings.js"></script>
+
+<script src="js/admin.js"></script>
+
+
+
+</body>
+
+
+</html>
