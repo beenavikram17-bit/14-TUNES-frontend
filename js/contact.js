@@ -1,111 +1,153 @@
-const contactForm = document.getElementById("contactForm");
+/* ==========================================
+      14 TUNES CONTACT FORM
+      PRODUCTION VERSION
+========================================== */
 
 
-contactForm.addEventListener("submit", async (e)=>{
-
-    e.preventDefault();
-
-
-    const responseBox = document.getElementById("response");
-
-
-    const contactData = {
-
-        name: document.getElementById("name").value.trim(),
-
-        phone: document.getElementById("phone").value.trim(),
-
-        message: document.getElementById("message").value.trim()
-
-    };
+const API_URL =
+"https://one4-tunes-backend-1.onrender.com";
 
 
 
-    try {
-
-
-        const response = await fetch(
-            "http://localhost:5001/api/contact",
-            {
-
-                method:"POST",
-
-                headers:{
-                    "Content-Type":"application/json"
-                },
-
-                body:JSON.stringify(contactData)
-
-            }
-        );
+const contactForm =
+document.getElementById("contactForm");
 
 
 
-        const result = await response.json();
+
+contactForm.addEventListener(
+"submit",
+async(e)=>{
+
+
+e.preventDefault();
 
 
 
-        console.log("Server Response:", result);
+const responseBox =
+document.getElementById("response");
 
 
 
-        if(response.ok && result.success){
+const contactData={
 
 
-            // Clear old candidate name
-            localStorage.removeItem("contactName");
-
-
-            // Save current candidate name
-            localStorage.setItem(
-                "contactName",
-                contactData.name
-            );
+name:
+document.getElementById("name")
+.value.trim(),
 
 
 
-            // Redirect to success page
-            window.location.href =
-            "contact-success.html";
-
-
-        }
+phone:
+document.getElementById("phone")
+.value.trim(),
 
 
 
-        else{
+message:
+document.getElementById("message")
+.value.trim()
 
 
-            responseBox.innerHTML =
-            result.message || "Message failed";
-
-
-            responseBox.style.color="red";
-
-
-        }
+};
 
 
 
-    }
+
+
+try{
+
+
+const response =
+await fetch(
+
+API_URL+
+"/api/contact",
+
+{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":
+"application/json"
+
+},
+
+body:
+JSON.stringify(contactData)
+
+}
+
+);
 
 
 
-    catch(error){
 
 
-        console.log("Fetch Error:",error);
+const result =
+await response.json();
 
 
 
-        responseBox.innerHTML =
-        "Cannot connect to server";
+console.log(result);
 
 
-        responseBox.style.color="red";
 
 
-    }
+
+if(response.ok && result.success){
+
+
+localStorage.setItem(
+"contactName",
+contactData.name
+);
+
+
+
+window.location.href=
+"contact-success.html";
+
+
+}
+
+else{
+
+
+responseBox.innerHTML=
+result.message ||
+"Message Failed";
+
+
+responseBox.style.color=
+"red";
+
+
+}
+
+
+
+}
+
+
+
+catch(error){
+
+
+console.log(error);
+
+
+responseBox.innerHTML=
+"Server Connection Failed";
+
+
+responseBox.style.color=
+"red";
+
+
+}
 
 
 

@@ -1,6 +1,12 @@
 /* ==========================================
    14 TUNES CASTING REGISTRATION
+   PRODUCTION VERSION
 ========================================== */
+
+
+const API_URL =
+"https://one4-tunes-backend-1.onrender.com";
+
 
 
 const form =
@@ -16,8 +22,6 @@ document.querySelectorAll(".role-card");
 
 
 
-
-
 /* ==========================================
    ROLE SELECTION
 ========================================== */
@@ -26,27 +30,24 @@ document.querySelectorAll(".role-card");
 roleCards.forEach(card=>{
 
 
-    card.addEventListener("click",()=>{
+card.addEventListener("click",()=>{
 
 
-        roleCards.forEach(c=>{
+roleCards.forEach(c=>{
 
-            c.classList.remove("selected");
+c.classList.remove("selected");
 
-        });
-
-
-
-        card.classList.add("selected");
+});
 
 
-
-        roleInput.value =
-        card.dataset.role;
+card.classList.add("selected");
 
 
+roleInput.value =
+card.dataset.role;
 
-    });
+
+});
 
 
 });
@@ -55,11 +56,8 @@ roleCards.forEach(card=>{
 
 
 
-
-
-
 /* ==========================================
-   PHONE NUMBER
+   PHONE VALIDATION
 ========================================== */
 
 
@@ -71,26 +69,20 @@ document.getElementById("phone");
 phone.addEventListener("input",function(){
 
 
-    this.value =
-    this.value.replace(/\D/g,"");
+this.value =
+this.value.replace(/\D/g,"");
 
 
 
-    if(this.value.length > 10){
+if(this.value.length>10){
 
+this.value =
+this.value.slice(0,10);
 
-        this.value =
-        this.value.slice(0,10);
-
-
-    }
+}
 
 
 });
-
-
-
-
 
 
 
@@ -109,24 +101,18 @@ document.getElementById("age");
 age.addEventListener("input",function(){
 
 
-    if(this.value < 1){
+if(this.value<1){
+
+this.value="";
+
+}
 
 
-        this.value="";
+if(this.value>80){
 
+this.value=80;
 
-    }
-
-
-
-    if(this.value > 80){
-
-
-        this.value=80;
-
-
-    }
-
+}
 
 
 });
@@ -135,52 +121,8 @@ age.addEventListener("input",function(){
 
 
 
-
-
-
-
 /* ==========================================
-   FLOAT LABELS
-========================================== */
-
-
-const inputs =
-document.querySelectorAll(
-"input,textarea,select"
-);
-
-
-
-inputs.forEach(input=>{
-
-
-    input.addEventListener("blur",()=>{
-
-
-        if(input.value !== ""){
-
-
-            input.classList.add("filled");
-
-
-        }
-
-
-    });
-
-
-});
-
-
-
-
-
-
-
-
-
-/* ==========================================
-   SUBMIT REGISTRATION
+   SUBMIT FORM
 ========================================== */
 
 
@@ -198,17 +140,14 @@ document.getElementById("name")
 .value.trim();
 
 
-
 const gender =
 document.getElementById("gender")
 .value;
 
 
-
 const address =
 document.getElementById("address")
 .value.trim();
-
 
 
 const role =
@@ -218,105 +157,55 @@ roleInput.value;
 
 
 
-
-/* ============================
-   VALIDATION
-============================ */
-
-
 if(name===""){
 
-
-alert(
-"Enter Full Name"
-);
-
-
+alert("Enter Full Name");
 return;
 
-
 }
-
 
 
 
 if(age.value===""){
 
-
-alert(
-"Enter Age"
-);
-
-
+alert("Enter Age");
 return;
 
-
 }
-
 
 
 
 if(gender===""){
 
-
-alert(
-"Select Gender"
-);
-
-
+alert("Select Gender");
 return;
-
 
 }
 
 
 
+if(phone.value.length!==10){
 
-
-if(phone.value.length !== 10){
-
-
-alert(
-"Enter Valid Phone Number"
-);
-
-
+alert("Enter Valid Phone Number");
 return;
 
-
 }
-
-
 
 
 
 if(address===""){
 
-
-alert(
-"Enter Address"
-);
-
-
+alert("Enter Address");
 return;
 
-
 }
-
-
 
 
 
 if(role===""){
 
-
-alert(
-"Please Select Your Casting Role"
-);
-
-
+alert("Select Casting Role");
 return;
-
 
 }
 
@@ -324,41 +213,23 @@ return;
 
 
 
-
-
-
-
-/* ============================
-   SEND DATA TO BACKEND
-============================ */
-
-
-
-const candidateData = {
+const candidateData={
 
 
 name:name,
 
-
 age:Number(age.value),
-
 
 gender:gender,
 
-
 role:role,
 
-
 phone:phone.value,
-
 
 address:address
 
 
-
 };
-
-
 
 
 
@@ -369,19 +240,14 @@ form.querySelector("button");
 
 
 
-btn.disabled = true;
+btn.disabled=true;
 
 
-
-btn.innerHTML = `
-
+btn.innerHTML=
+`
 <i class="fa-solid fa-spinner fa-spin"></i>
-
 Submitting...
-
 `;
-
-
 
 
 
@@ -393,36 +259,26 @@ try{
 const response =
 await fetch(
 
-"http://localhost:5001/api/users/register",
+API_URL+
+"/api/users/register",
 
 {
 
-
 method:"POST",
 
-
-
 headers:{
-
 
 "Content-Type":
 "application/json"
 
-
 },
-
-
 
 body:
 JSON.stringify(candidateData)
 
-
-
 }
 
 );
-
-
 
 
 
@@ -432,24 +288,12 @@ await response.json();
 
 
 
-
-
-console.log(
-"Server Response:",
-result
-);
-
-
-
+console.log(result);
 
 
 
 
 if(response.ok){
-
-
-
-/* SAVE FOR SUCCESS PAGE */
 
 
 localStorage.setItem(
@@ -465,12 +309,8 @@ role
 
 
 
-
-
-
-window.location.href =
+window.location.href=
 "success.html";
-
 
 
 
@@ -479,47 +319,33 @@ window.location.href =
 else{
 
 
-
 alert(
-
 result.message ||
 "Registration Failed"
-
 );
-
 
 
 btn.disabled=false;
 
 
-
 }
 
 
 
 }
-
-
 
 catch(error){
 
 
-
-console.log(
-"Registration Error:",
-error
-);
-
+console.log(error);
 
 
 alert(
-"Cannot connect to server"
+"Server Connection Failed"
 );
 
 
-
 btn.disabled=false;
-
 
 
 }
@@ -527,9 +353,6 @@ btn.disabled=false;
 
 
 });
-
-
-
 
 
 
@@ -552,7 +375,7 @@ card.addEventListener(
 if(!card.classList.contains("selected")){
 
 
-card.style.transform =
+card.style.transform=
 "translateY(-10px) scale(1.03)";
 
 
@@ -560,8 +383,6 @@ card.style.transform =
 
 
 });
-
-
 
 
 
@@ -580,15 +401,10 @@ card.style.transform="";
 }
 
 
-
 });
 
 
-
 });
-
-
-
 
 
 
@@ -596,7 +412,7 @@ card.style.transform="";
 
 
 /* ==========================================
-   SMOOTH APPEAR
+   PAGE ANIMATION
 ========================================== */
 
 
@@ -612,8 +428,7 @@ document
 
 section.style.opacity="0";
 
-
-section.style.transform =
+section.style.transform=
 "translateY(50px)";
 
 
@@ -623,13 +438,10 @@ setTimeout(()=>{
 
 section.style.transition=".7s";
 
-
 section.style.opacity="1";
 
-
-section.style.transform =
+section.style.transform=
 "translateY(0)";
-
 
 
 },index*250);
@@ -637,7 +449,6 @@ section.style.transform =
 
 
 });
-
 
 
 });

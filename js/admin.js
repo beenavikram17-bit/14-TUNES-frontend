@@ -7,13 +7,12 @@
 /* =====================================================
         API URLS
 ===================================================== */
-
 const USER_API =
-"http://localhost:5001/api/users";
+"https://one4-tunes-backend-1.onrender.com/api/users";
+
 
 const CONTACT_API =
-"http://localhost:5001/api/contact";
-
+"https://one4-tunes-backend-1.onrender.com/api/contact";
 
 
 /* =====================================================
