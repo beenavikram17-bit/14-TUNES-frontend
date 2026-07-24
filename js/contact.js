@@ -1,72 +1,112 @@
-/* =================================
-   14 TUNES CONTACT FORM JS
-================================= */
+const contactForm = document.getElementById("contactForm");
 
 
-document.addEventListener("DOMContentLoaded", function () {
+contactForm.addEventListener("submit", async (e)=>{
+
+    e.preventDefault();
 
 
-    const contactForm = document.getElementById("contactForm");
+    const responseBox = document.getElementById("response");
 
 
-    contactForm.addEventListener("submit", function (event) {
+    const contactData = {
 
+        name: document.getElementById("name").value.trim(),
 
-        event.preventDefault();
+        phone: document.getElementById("phone").value.trim(),
 
+        message: document.getElementById("message").value.trim()
 
-
-        const name = document.querySelector(
-            "input[type='text']"
-        ).value.trim();
-
-
-
-        const phone = document.querySelector(
-            "input[type='tel']"
-        ).value.trim();
+    };
 
 
 
-        const message = document.querySelector(
-            "textarea"
-        ).value.trim();
+    try {
+
+
+        const response = await fetch(
+            "http://localhost:5001/api/contact",
+            {
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify(contactData)
+
+            }
+        );
 
 
 
-        // Validation
-
-        if (
-            name === "" ||
-            phone === "" ||
-            message === ""
-        ) {
+        const result = await response.json();
 
 
-            alert("Please fill all details!");
 
-            return;
+        console.log("Server Response:", result);
+
+
+
+        if(response.ok && result.success){
+
+
+            // Clear old candidate name
+            localStorage.removeItem("contactName");
+
+
+            // Save current candidate name
+            localStorage.setItem(
+                "contactName",
+                contactData.name
+            );
+
+
+
+            // Redirect to success page
+            window.location.href =
+            "contact-success.html";
 
 
         }
 
 
 
-        // Save name for success page
-
-        localStorage.setItem(
-            "contactName",
-            name
-        );
+        else{
 
 
-
-        // Redirect to contact success page
-
-        window.location.href = "contact-success.html";
+            responseBox.innerHTML =
+            result.message || "Message failed";
 
 
-    });
+            responseBox.style.color="red";
+
+
+        }
+
+
+
+    }
+
+
+
+    catch(error){
+
+
+        console.log("Fetch Error:",error);
+
+
+
+        responseBox.innerHTML =
+        "Cannot connect to server";
+
+
+        responseBox.style.color="red";
+
+
+    }
+
 
 
 });

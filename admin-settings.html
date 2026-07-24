@@ -1,24 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
-
 
 <meta charset="UTF-8">
 
-
-<meta 
-name="viewport" 
-content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 <title>
 14 TUNES Admin Settings
 </title>
-
-
 
 
 <link rel="stylesheet" href="style/admin.css">
@@ -33,14 +25,29 @@ content="width=device-width, initial-scale=1.0">
 
 
 
-
 <body>
 
 
 
+<!-- LOGIN CHECK -->
+
+<script>
+
+if(localStorage.getItem("adminLogin") !== "true"){
+
+window.location.href="admin-login.html";
+
+}
+
+</script>
 
 
-<!-- MOBILE MENU BUTTON -->
+
+
+
+
+
+<!-- MOBILE MENU -->
 
 
 <button class="menu-btn" id="menuBtn">
@@ -54,28 +61,25 @@ content="width=device-width, initial-scale=1.0">
 
 
 
-<!-- OVERLAY -->
-
-
 <div class="sidebar-overlay" id="overlay"></div>
 
 
+<!-- SIDEBAR -->
+
+<aside
+class="admin-sidebar"
+id="sidebar">
 
 
+<div class="logo">
 
-
-
-
-<!-- ADMIN SIDEBAR -->
-
-
-<aside class="admin-sidebar" id="sidebar">
-
-
-
-<div class="admin-logo">
-
+<h1>
 14 TUNES
+</h1>
+
+<p>
+ADMIN PANEL
+</p>
 
 </div>
 
@@ -83,56 +87,49 @@ content="width=device-width, initial-scale=1.0">
 
 
 
+<nav>
 
-<ul>
-
-
-
-<li>
 
 <a href="admin.html">
 
-👥 Users
+🏠 Dashboard
 
 </a>
 
-</li>
+
+
+
+<a href="admin-contact.html">
+
+📩 Contact Messages
+
+</a>
 
 
 
 
 
-
-<li>
-
-<a href="admin-settings.html" class="active">
+<a href="admin-settings.html"
+class="active">
 
 ⚙ Settings
 
 </a>
 
-</li>
 
 
 
 
-
-
-
-<li>
-
-<a href="logout.html">
+<a href="#"
+onclick="logout();return false;">
 
 🚪 Logout
 
 </a>
 
-</li>
 
 
-
-</ul>
-
+</nav>
 
 
 </aside>
@@ -144,36 +141,10 @@ content="width=device-width, initial-scale=1.0">
 
 
 
-
-<!-- LOGIN CHECK -->
-
-
-<script>
-
-
-if(localStorage.getItem("adminLogin") !== "true"){
-
-
-window.location.href="admin-login.html";
-
-
-}
-
-
-</script>
-
-
-
-
-
-
-
-
-
 <!-- SETTINGS CONTENT -->
 
 
-<div class="admin-box settings-box">
+<main class="admin-box settings-box">
 
 
 
@@ -203,11 +174,12 @@ window.location.href="admin-login.html";
 
 
 
+
 <!-- ADMIN PROFILE -->
 
 
-<div class="settings-card">
 
+<div class="settings-card">
 
 
 <h2>
@@ -226,7 +198,6 @@ Admin Name
 </label>
 
 
-
 <input
 
 type="text"
@@ -234,7 +205,6 @@ type="text"
 id="adminName"
 
 placeholder="Enter Admin Name">
-
 
 
 
@@ -262,7 +232,6 @@ placeholder="Enter Email">
 
 
 
-
 <button id="saveProfile">
 
 Save Profile
@@ -281,11 +250,11 @@ Save Profile
 
 
 
-<!-- PASSWORD CHANGE -->
+<!-- PASSWORD -->
+
 
 
 <div class="settings-card">
-
 
 
 <h2>
@@ -317,7 +286,6 @@ placeholder="Current Password">
 
 
 
-
 <label>
 
 New Password
@@ -332,7 +300,6 @@ type="password"
 id="newPassword"
 
 placeholder="New Password">
-
 
 
 
@@ -356,8 +323,7 @@ Update Password
 
 
 
-
-<!-- WEBSITE SETTINGS -->
+<!-- WEBSITE CONTROL -->
 
 
 <div class="settings-card">
@@ -373,11 +339,14 @@ Website Control
 
 
 
+
 <label>
 
 Website Status
 
 </label>
+
+
 
 
 
@@ -406,6 +375,7 @@ Maintenance
 
 
 
+
 <button id="saveWebsite">
 
 Save Settings
@@ -414,16 +384,16 @@ Save Settings
 
 
 
-</div>
-
-
-
-
-
-
 
 </div>
 
+
+
+
+
+
+
+</main>
 
 
 
@@ -439,6 +409,5 @@ Save Settings
 
 
 </body>
-
 
 </html>

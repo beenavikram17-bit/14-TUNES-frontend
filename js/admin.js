@@ -1,31 +1,32 @@
-/* =====================================
-        14 TUNES ADMIN USER MANAGEMENT
-        JWT AUTH CONNECTED
-===================================== */
+/* =====================================================
+        14 TUNES PREMIUM ADMIN PANEL
+        OPTIMIZED VERSION
+===================================================== */
 
 
-// ===============================
-// API CONFIGURATION
-// ===============================
+/* =====================================================
+        API URLS
+===================================================== */
 
-const API_URL =
-"https://one4-tunes-backend.onrender.com/api/users";
+const USER_API =
+"http://localhost:5001/api/users";
+
+const CONTACT_API =
+"http://localhost:5001/api/contact";
 
 
 
-
-// ===============================
-// CHECK ADMIN TOKEN
-// ===============================
+/* =====================================================
+        LOGIN CHECK
+===================================================== */
 
 const token =
 localStorage.getItem("adminToken");
 
 
-
 if(!token){
 
-    alert("Please login first.");
+    localStorage.clear();
 
     window.location.href =
     "admin-login.html";
@@ -35,40 +36,9 @@ if(!token){
 
 
 
-// ===============================
-// JWT HEADERS
-// ===============================
-
-function getHeaders(){
-
-
-    return {
-
-
-        "Content-Type":"application/json",
-
-
-        "Authorization":
-
-        `Bearer ${token}`
-
-
-    };
-
-
-}
-
-
-
-
-
-
-// ===============================
-// ELEMENTS
-// ===============================
-
-
-let users = [];
+/* =====================================================
+        ELEMENTS
+===================================================== */
 
 
 const userList =
@@ -79,98 +49,123 @@ const searchInput =
 document.getElementById("searchInput");
 
 
+const noUsers =
+document.getElementById("noUsers");
+
+
+const totalUsers =
+document.getElementById("totalUsers");
+
+
+const maleUsers =
+document.getElementById("maleUsers");
+
+
+const femaleUsers =
+document.getElementById("femaleUsers");
+
+
+const childUsers =
+document.getElementById("childUsers");
+
+
+const activeUsers =
+document.getElementById("activeUsers");
+
+
+const blockedUsers =
+document.getElementById("blockedUsers");
+
+
+const contactCount =
+document.getElementById("contactCount");
 
 
 
 
-// ===============================
-// LOAD USERS
-// ===============================
+
+/* =====================================================
+        GLOBAL VARIABLES
+===================================================== */
+
+
+let users=[];
+
+let loading=false;
+
+let refreshTimer;
+
+
+
+
+
+/* =====================================================
+        LOAD USERS
+===================================================== */
 
 
 async function loadUsers(){
 
 
+    if(loading)
+    return;
+
+
+    loading=true;
+
+
     try{
 
 
         const response =
-
-        await fetch(
-
-            API_URL,
-
-            {
-
-                method:"GET",
-
-                headers:getHeaders()
-
-            }
-
-        );
+        await fetch(USER_API);
 
 
 
+        if(!response.ok){
 
-
-        if(response.status === 401){
-
-
-            logout();
-
-
-            return;
-
+            throw new Error(
+                "User API Error"
+            );
 
         }
 
 
 
-
-
-
         users =
-
         await response.json();
 
 
 
+        console.log(
+            "Users Loaded",
+            users
+        );
 
-        displayUsers();
+
+
+        updateStatistics();
+
+        displayUsers(users);
 
 
 
     }
-
 
 
     catch(error){
 
 
-        console.log(error);
+        console.log(
+            "Loading Error",
+            error
+        );
 
 
+        if(noUsers){
 
-        if(userList){
-
-
-            userList.innerHTML = `
-
-
-            <tr>
-
-            <td colspan="8">
-
-            Backend Server Not Connected
-
-            </td>
-
-            </tr>
-
-
-            `;
-
+            noUsers.innerHTML =
+            "Server Connection Error";
 
         }
 
@@ -178,6 +173,13 @@ async function loadUsers(){
     }
 
 
+    finally{
+
+        loading=false;
+
+    }
+
+
 }
 
 
@@ -185,153 +187,94 @@ async function loadUsers(){
 
 
 
+/* =====================================================
+        STATISTICS
+===================================================== */
 
-// ===============================
-// DISPLAY USERS
-// ===============================
 
+function updateStatistics(){
 
-function displayUsers(){
 
+let male=0;
 
-    if(!userList){
+let female=0;
 
-        return;
+let child=0;
 
-    }
+let active=0;
 
+let blocked=0;
 
 
-    userList.innerHTML = "";
 
+users.forEach(user=>{
 
 
+const gender =
+(user.gender||"")
+.toLowerCase();
 
-    if(users.length === 0){
 
+const role =
+(user.role||"")
+.toLowerCase();
 
-        userList.innerHTML = `
 
 
-        <tr>
+if(gender==="male")
+male++;
 
-        <td colspan="8">
 
-        No Registered Users Found
+if(gender==="female")
+female++;
 
-        </td>
 
-        </tr>
+if(role.includes("child"))
+child++;
 
 
-        `;
+if(user.status==="Active")
+active++;
 
 
-        return;
+if(user.status==="Blocked")
+blocked++;
 
-    }
 
 
+});
 
 
 
 
-    users.forEach((user)=>{
+if(totalUsers)
+totalUsers.textContent =
+users.length;
 
 
-        let row =
-        document.createElement("tr");
+if(maleUsers)
+maleUsers.textContent =
+male;
 
 
+if(femaleUsers)
+femaleUsers.textContent =
+female;
 
-        row.innerHTML = `
 
+if(childUsers)
+childUsers.textContent =
+child;
 
-        <td>${user.name}</td>
 
+if(activeUsers)
+activeUsers.textContent =
+active;
 
-        <td>${user.age}</td>
 
-
-        <td>${user.gender}</td>
-
-
-        <td>${user.role}</td>
-
-
-        <td>${user.phone}</td>
-
-
-        <td>${user.address}</td>
-
-
-
-        <td>
-
-
-        <select
-
-        onchange="updateStatus('${user._id}',this.value)">
-
-
-
-        <option value="Active"
-
-        ${user.status==="Active" ? "selected":""}>
-
-        Active
-
-        </option>
-
-
-
-        <option value="Blocked"
-
-        ${user.status==="Blocked" ? "selected":""}>
-
-        Blocked
-
-        </option>
-
-
-        </select>
-
-
-
-        </td>
-
-
-
-
-        <td>
-
-
-        <button
-
-        class="delete-btn"
-
-        onclick="deleteUser('${user._id}')">
-
-
-        Delete
-
-
-        </button>
-
-
-        </td>
-
-
-
-        `;
-
-
-
-        userList.appendChild(row);
-
-
-
-    });
+if(blockedUsers)
+blockedUsers.textContent =
+blocked;
 
 
 
@@ -343,111 +286,211 @@ function displayUsers(){
 
 
 
-// ===============================
-// DELETE USER
-// ===============================
+/* =====================================================
+        DISPLAY USERS
+===================================================== */
+
+
+function displayUsers(data){
+
+
+
+if(!userList)
+return;
+
+
+
+userList.innerHTML="";
+
+
+
+if(data.length===0){
+
+
+if(noUsers)
+
+noUsers.innerHTML =
+"No Registered Users Found";
+
+
+return;
+
+
+}
+
+
+
+noUsers.innerHTML="";
+
+
+
+const fragment =
+document.createDocumentFragment();
+
+
+
+data.forEach(user=>{
+
+
+const row =
+document.createElement("tr");
+
+
+
+row.innerHTML=`
+
+<td>${user.name}</td>
+
+<td>${user.age}</td>
+
+<td>${user.gender}</td>
+
+<td>${user.role}</td>
+
+
+<td>
+
+<a class="phone-link"
+href="tel:${user.phone}">
+
+📞 ${user.phone}
+
+</a>
+
+</td>
+
+
+<td>${user.address}</td>
+
+
+
+<td>
+
+<select
+onchange="updateStatus('${user._id}',this.value)">
+
+
+<option value="Active"
+${user.status==="Active"?"selected":""}>
+
+Active
+
+</option>
+
+
+<option value="Blocked"
+${user.status==="Blocked"?"selected":""}>
+
+Blocked
+
+</option>
+
+
+</select>
+
+</td>
+
+
+
+<td>
+
+<button
+class="delete-btn"
+onclick="deleteUser('${user._id}')">
+
+Delete
+
+</button>
+
+</td>
+
+`;
+
+
+
+fragment.appendChild(row);
+
+
+
+});
+
+
+
+userList.appendChild(fragment);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+        DELETE USER
+===================================================== */
 
 
 async function deleteUser(id){
 
 
-    if(!confirm(
+if(!confirm(
+"Delete this user?"
+))
+return;
 
-    "Are you sure you want to delete this user?"
 
-    )){
 
+try{
 
-        return;
 
-    }
+await fetch(
 
+USER_API+"/"+id,
 
+{
 
+method:"DELETE"
 
+}
 
+);
 
-    try{
 
 
-        const response =
+alert(
+"User Deleted Successfully"
+);
 
-        await fetch(
 
 
-            API_URL + "/" + id,
-
-
-            {
-
-
-                method:"DELETE",
-
-
-                headers:getHeaders()
-
-
-            }
-
-
-        );
-
-
-
-
-
-        if(response.status === 401){
-
-
-            logout();
-
-
-            return;
-
-        }
-
-
-
-
-
-
-        const data =
-
-        await response.json();
-
-
-
-
-        alert(data.message);
-
-
-
-        loadUsers();
-
-
-
-    }
-
-
-
-    catch(error){
-
-
-        console.log(error);
-
-
-        alert(
-
-        "Delete failed"
-
-        );
-
-
-    }
+loadUsers();
 
 
 
 }
+
+catch(error){
+
+
+console.log(error);
+
+
+alert(
+"Delete Failed"
+);
+
+
+}
+
+
+
+}
+
 
 
 window.deleteUser =
@@ -459,96 +502,59 @@ deleteUser;
 
 
 
-// ===============================
-// UPDATE STATUS
-// ===============================
+
+
+/* =====================================================
+        UPDATE STATUS
+===================================================== */
 
 
 async function updateStatus(id,status){
 
 
-
-    try{
-
-
-        const response =
-
-        await fetch(
+try{
 
 
-            API_URL + "/" + id,
+await fetch(
 
+USER_API+"/"+id,
 
-            {
+{
 
+method:"PATCH",
 
-                method:"PATCH",
+headers:{
 
+"Content-Type":
+"application/json"
 
-                headers:getHeaders(),
+},
 
+body:JSON.stringify({
 
+status
 
-                body:JSON.stringify({
+})
 
-                    status:status
+}
 
-                })
-
-
-            }
-
-
-        );
+);
 
 
 
+loadUsers();
 
 
 
-        if(response.status === 401){
+}
+
+catch(error){
 
 
-            logout();
+console.log(error);
 
 
-            return;
-
-        }
-
-
-
-
-
-
-        const data =
-
-        await response.json();
-
-
-
-
-        alert(data.message);
-
-
-
-    }
-
-
-    catch(error){
-
-
-        console.log(error);
-
-
-        alert(
-
-        "Status update failed"
-
-        );
-
-
-    }
+}
 
 
 
@@ -566,31 +572,178 @@ updateStatus;
 
 
 
-// ===============================
-// LOGOUT
-// ===============================
+
+/* =====================================================
+        SEARCH
+===================================================== */
+
+
+if(searchInput){
+
+
+searchInput.addEventListener(
+"input",
+function(){
+
+
+
+const value =
+this.value.toLowerCase();
+
+
+
+const filtered =
+users.filter(user=>{
+
+
+return(
+
+(user.name||"")
+.toLowerCase()
+.includes(value)
+
+
+
+||
+
+(user.phone||"")
+.toLowerCase()
+.includes(value)
+
+
+
+||
+
+(user.address||"")
+.toLowerCase()
+.includes(value)
+
+
+
+||
+
+(user.role||"")
+.toLowerCase()
+.includes(value)
+
+
+
+);
+
+
+});
+
+
+
+displayUsers(filtered);
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+        CONTACT COUNT
+===================================================== */
+
+
+async function loadContactCount(){
+
+
+try{
+
+
+const response =
+await fetch(CONTACT_API);
+
+
+
+const data =
+await response.json();
+
+
+
+let contacts=[];
+
+
+
+if(Array.isArray(data)){
+
+contacts=data;
+
+}
+
+else if(data.contacts){
+
+contacts=data.contacts;
+
+}
+
+
+
+if(contactCount)
+
+contactCount.textContent =
+contacts.length;
+
+
+
+}
+
+catch(error){
+
+
+console.log(
+"Contact Error",
+error
+);
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+        LOGOUT
+===================================================== */
 
 
 function logout(){
 
 
-    localStorage.removeItem(
-
-    "adminToken"
-
-    );
+localStorage.removeItem(
+"adminToken"
+);
 
 
-    localStorage.removeItem(
-
-    "adminLogin"
-
-    );
+localStorage.removeItem(
+"adminLogin"
+);
 
 
-    window.location.href =
 
-    "admin-login.html";
+window.location.href =
+"admin-login.html";
 
 
 }
@@ -605,87 +758,12 @@ logout;
 
 
 
-// ===============================
-// INITIAL LOAD
-// ===============================
-
-
-loadUsers();
 
 
 
-
-
-
-
-// ===============================
-// SEARCH USERS
-// ===============================
-
-
-if(searchInput){
-
-
-    searchInput.addEventListener(
-
-    "keyup",
-
-    function(){
-
-
-        let value =
-
-        this.value.toLowerCase();
-
-
-
-
-        document.querySelectorAll(
-
-        "#userList tr"
-
-        )
-
-        .forEach(row=>{
-
-
-            row.style.display =
-
-
-            row.innerText
-
-            .toLowerCase()
-
-            .includes(value)
-
-            ?
-
-            ""
-
-            :
-
-            "none";
-
-
-
-        });
-
-
-
-    });
-
-
-
-}
-
-
-
-
-
-
-// ===============================
-// MOBILE SIDEBAR
-// ===============================
+/* =====================================================
+        MOBILE SIDEBAR
+===================================================== */
 
 
 const menuBtn =
@@ -701,31 +779,36 @@ document.getElementById("overlay");
 
 
 
-
-if(menuBtn && sidebar && overlay){
-
-
-    menuBtn.onclick = ()=>{
+if(menuBtn){
 
 
-        sidebar.classList.toggle("active");
-
-        overlay.classList.toggle("active");
+menuBtn.onclick=function(){
 
 
-    };
+sidebar.classList.toggle("active");
+
+overlay.classList.toggle("active");
+
+
+};
+
+
+}
 
 
 
-    overlay.onclick = ()=>{
+if(overlay){
 
 
-        sidebar.classList.remove("active");
-
-        overlay.classList.remove("active");
+overlay.onclick=function(){
 
 
-    };
+sidebar.classList.remove("active");
+
+overlay.classList.remove("active");
+
+
+};
 
 
 }
@@ -734,8 +817,91 @@ if(menuBtn && sidebar && overlay){
 
 
 
+
+
+
+
+/* =====================================================
+        DASHBOARD REFRESH
+===================================================== */
+
+
+async function refreshDashboard(){
+
+
+await loadUsers();
+
+
+await loadContactCount();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+        PAGE START
+===================================================== */
+
+
+window.addEventListener(
+"load",
+()=>{
+
+
 console.log(
-
-"14 TUNES ADMIN PANEL JWT SECURITY ACTIVE ✅"
-
+"14 TUNES ADMIN READY"
 );
+
+
+
+refreshDashboard();
+
+
+
+/*
+AUTO REFRESH
+*/
+
+refreshTimer =
+setInterval(()=>{
+
+
+if(document.visibilityState==="visible"){
+
+refreshDashboard();
+
+}
+
+
+},30000);
+
+
+
+});
+
+
+
+
+
+
+
+/* STOP TIMER WHEN EXIT */
+
+
+window.addEventListener(
+"beforeunload",
+()=>{
+
+
+clearInterval(refreshTimer);
+
+
+});

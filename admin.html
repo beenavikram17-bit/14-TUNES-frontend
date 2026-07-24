@@ -1,113 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>14 TUNES | Premium Admin Panel</title>
+
+<link rel="stylesheet" href="style/admin.css">
+<link rel="stylesheet" href="style/responsive.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
 <script>
 
 if(localStorage.getItem("adminLogin") !== "true"){
 
-    alert("Please login first.");
-
-    window.location.href = "admin-login.html";
+    window.location.replace("admin-login.html");
 
 }
 
 </script>
 
-<meta charset="UTF-8">
+<!-- MOBILE MENU -->
 
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-<title>
-14 TUNES Admin Panel
-</title>
-
-
-
-
-<link rel="stylesheet" href="style/admin.css">
-
-<link rel="stylesheet" href="style/responsive.css">
-
-</head>
-
-
-
-
-
-<body>
-
-
-
-
-
-<!-- MOBILE MENU BUTTON -->
-
-
-<button class="menu-btn" id="menuBtn">
+<button
+type="button"
+class="menu-btn"
+id="menuBtn">
 
 ☰
 
 </button>
 
-
-
-
-
-
-<!-- SIDEBAR OVERLAY -->
-
-
-<div class="sidebar-overlay" id="overlay"></div>
-
-
-
-
-
-
-
-
-<!-- ADMIN SIDEBAR -->
-
-
-<aside class="admin-sidebar" id="sidebar">
-
-
-
-<div class="admin-logo">
-
-14 TUNES
+<div
+class="sidebar-overlay"
+id="overlay">
 
 </div>
 
+<!-- SIDEBAR -->
 
+<aside
+class="admin-sidebar"
+id="sidebar">
 
+<div class="logo">
 
+<h1>14 TUNES</h1>
 
+<p>ADMIN PANEL</p>
 
-<ul>
+</div>
 
+<nav>
 
+<a
+href="admin.html"
+class="active">
 
-<li>
-
-<a href="admin.html" class="active">
-
-👥 Users
+🏠 Dashboard
 
 </a>
 
-</li>
+<a href="admin-contact.html">
 
+📩 Contact Messages
 
-
-
-
-<li>
+</a>
 
 <a href="admin-settings.html">
 
@@ -115,119 +81,173 @@ if(localStorage.getItem("adminLogin") !== "true"){
 
 </a>
 
-</li>
-
-
-
-
-
-<li>
-
-<a href="logout.html">
+<a
+href="#"
+onclick="logout();return false;">
 
 🚪 Logout
 
 </a>
 
-</li>
-
-
-
-
-</ul>
-
-
-
-
+</nav>
 
 </aside>
 
+<!-- MAIN -->
 
+<main class="admin-main">
 
+<div class="top-bar">
 
+<h1>Dashboard</h1>
 
+<a
+href="home.html"
+class="home-btn">
 
-
-
-
-<!-- LOGIN PROTECTION -->
-
-
-<script>
-
-
-if(localStorage.getItem("adminLogin") !== "true"){
-
-
-window.location.href="admin-login.html";
-
-
-}
-
-
-</script>
-
-
-
-
-
-
-
-
-
-<!-- ADMIN CONTENT -->
-
-
-<div class="admin-box">
-
-
-
-
-
-
-<a href="home.html" class="back-home">
-
-← Back to Home
+← Back Home
 
 </a>
 
+</div>
 
+<!-- DASHBOARD CARDS -->
 
+<section class="dashboard-cards">
 
+<div class="card">
 
+<div class="icon">👥</div>
 
+<div>
 
-<h1>
+<h2 id="totalUsers">0</h2>
 
-👥 14 TUNES USER MANAGEMENT
+<p>Total Users</p>
 
-</h1>
+</div>
 
+</div>
 
+<div class="card">
 
+<div class="icon">👨</div>
 
+<div>
 
+<h2 id="maleUsers">0</h2>
 
+<p>Male Artists</p>
 
-<h2>
+</div>
 
-Registered Users
+</div>
 
-</h2>
+<div class="card">
 
+<div class="icon">👩</div>
 
+<div>
 
+<h2 id="femaleUsers">0</h2>
 
+<p>Female Artists</p>
 
+</div>
 
+</div>
 
+<div class="card">
 
+<div class="icon">🧒</div>
 
-<!-- SEARCH BOX -->
+<div>
 
+<h2 id="childUsers">0</h2>
+
+<p>Child Artists</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="icon">📩</div>
+
+<div>
+
+<h2 id="contactCount">0</h2>
+
+<p>Contact Messages</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="icon">🟢</div>
+
+<div>
+
+<h2 id="activeUsers">0</h2>
+
+<p>Active Users</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="icon">🚫</div>
+
+<div>
+
+<h2 id="blockedUsers">0</h2>
+
+<p>Blocked Users</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- QUICK ACTIONS -->
+
+<section class="quick-actions">
+
+<a
+href="admin-contact.html"
+class="action-card">
+
+📩 View Contact Messages
+
+</a>
+
+<a
+href="register.html"
+class="action-card">
+
+➕ Register Artist
+
+</a>
+
+<a
+href="admin-settings.html"
+class="action-card">
+
+⚙ Settings
+
+</a>
+
+</section>
+
+<!-- SEARCH -->
 
 <div class="search-box">
-
 
 <input
 
@@ -235,137 +255,61 @@ type="text"
 
 id="searchInput"
 
-placeholder="Search Users">
+placeholder="Search users by Name, Phone or Address..."
 
+>
 
 </div>
 
+<!-- TABLE -->
 
-
-
-
-
-
-
-
-<!-- USER TABLE -->
-
+<div class="table-box">
 
 <table>
 
-
 <thead>
-
 
 <tr>
 
+<th>Name</th>
 
-<th>
-Name
-</th>
+<th>Age</th>
 
+<th>Gender</th>
 
+<th>Role</th>
 
-<th>
-Age
-</th>
+<th>Phone</th>
 
+<th>Address</th>
 
+<th>Status</th>
 
-<th>
-Gender
-</th>
-
-
-
-<th>
-Role
-</th>
-
-
-
-<th>
-Phone Number
-</th>
-
-
-
-<th>
-Address
-</th>
-
-
-
-<th>
-Status
-</th>
-
-
-
-<th>
-Action
-</th>
-
-
+<th>Action</th>
 
 </tr>
 
-
 </thead>
-
-
-
-
-
-
 
 <tbody id="userList">
 
-
+<!-- Users Loaded Here -->
 
 </tbody>
 
-
-
-
-
 </table>
 
-
-
-
-
-
-
-<div id="noUsers" style="text-align:center;margin-top:20px;">
-
+<p id="noUsers"></p>
 
 </div>
 
+</main>
 
+<script
+src="js/admin.js"
+defer>
 
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- JAVASCRIPT -->
-
-
-<script src="js/admin.js"></script>
-
-
+</script>
 
 </body>
-
-
 </html>

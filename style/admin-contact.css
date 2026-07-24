@@ -1,0 +1,2590 @@
+/* =====================================================
+   14 TUNES CONTACT MESSAGES ADMIN
+   CINEMATIC GLASS WHITE THEME
+===================================================== */
+
+
+/* ================= GOOGLE FONT ================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+
+
+/* ================= RESET ================= */
+
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+
+
+
+
+/* ================= BODY ================= */
+
+
+body{
+
+
+    font-family:'Poppins',sans-serif;
+
+
+    min-height:100vh;
+
+
+
+    background:
+
+
+    radial-gradient(
+        circle at top left,
+        rgba(13,110,253,.15),
+        transparent 35%
+    ),
+
+
+    radial-gradient(
+        circle at bottom right,
+        rgba(212,175,55,.18),
+        transparent 35%
+    ),
+
+
+    #ffffff;
+
+
+
+    color:#222;
+
+
+    overflow-x:hidden;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+
+.admin-sidebar{
+
+
+    position:fixed;
+
+
+    top:25px;
+
+
+    left:25px;
+
+
+
+    width:230px;
+
+
+
+    height:calc(100vh - 50px);
+
+
+
+    padding:20px;
+
+
+
+    border-radius:25px;
+
+
+
+    background:
+
+
+    rgba(255,255,255,.60);
+
+
+
+    backdrop-filter:blur(25px);
+
+
+
+    border:
+
+
+    1px solid rgba(255,255,255,.8);
+
+
+
+    box-shadow:
+
+
+    0 20px 50px rgba(13,110,253,.18),
+
+
+    inset 0 0 30px rgba(255,255,255,.8);
+
+
+
+    z-index:1000;
+
+
+}
+
+
+
+
+/* SIDEBAR GLOW */
+
+
+.admin-sidebar::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    inset:-3px;
+
+
+
+    border-radius:28px;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #0d6efd,
+
+        #d4af37
+
+    );
+
+
+
+    z-index:-1;
+
+
+
+    filter:blur(18px);
+
+
+
+    opacity:.35;
+
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+
+.admin-brand{
+
+
+    text-align:center;
+
+
+
+    padding:15px;
+
+
+
+    border-radius:18px;
+
+
+
+    background:
+
+
+    rgba(255,255,255,.55);
+
+
+
+}
+
+
+
+
+
+.admin-brand img{
+
+
+    width:65px;
+
+
+    height:65px;
+
+
+
+    border-radius:50%;
+
+
+
+    object-fit:cover;
+
+
+
+    border:
+
+
+    3px solid #d4af37;
+
+
+
+    box-shadow:
+
+
+    0 0 25px rgba(212,175,55,.6);
+
+
+
+}
+
+
+
+
+
+.admin-brand h2{
+
+
+    margin-top:10px;
+
+
+    font-family:'Cinzel',serif;
+
+
+    font-size:23px;
+
+
+    color:#0d6efd;
+
+
+}
+
+
+
+
+
+.admin-brand span{
+
+
+    display:block;
+
+
+    margin-top:5px;
+
+
+    font-size:11px;
+
+
+    letter-spacing:2px;
+
+
+    color:#777;
+
+
+}
+/* =====================================================
+   SIDEBAR MENU
+===================================================== */
+
+
+.sidebar-menu{
+
+
+    list-style:none;
+
+
+    margin-top:35px;
+
+
+    padding:0;
+
+
+}
+
+
+
+.sidebar-menu li{
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+.sidebar-menu a{
+
+
+    height:50px;
+
+
+
+    display:flex;
+
+
+
+    align-items:center;
+
+
+
+    gap:15px;
+
+
+
+    padding:0 18px;
+
+
+
+    position:relative;
+
+
+
+    overflow:hidden;
+
+
+
+    border-radius:16px;
+
+
+
+    text-decoration:none;
+
+
+
+    color:#444;
+
+
+
+    font-size:15px;
+
+
+
+    font-weight:500;
+
+
+
+    background:
+
+
+    rgba(255,255,255,.65);
+
+
+
+    border:
+
+
+    1px solid rgba(13,110,253,.12);
+
+
+
+    transition:.35s;
+
+
+
+}
+
+
+
+
+
+.sidebar-menu a::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+
+    left:0;
+
+
+
+    top:20%;
+
+
+
+    height:60%;
+
+
+
+    width:4px;
+
+
+
+    background:#d4af37;
+
+
+
+    border-radius:10px;
+
+
+
+    transform:scaleY(0);
+
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+.sidebar-menu a:hover::before,
+
+.sidebar-menu a.active::before{
+
+
+    transform:scaleY(1);
+
+
+}
+
+
+
+
+.sidebar-menu a:hover{
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #0d6efd,
+
+        #4da3ff
+
+    );
+
+
+
+    color:white;
+
+
+
+    transform:translateX(8px);
+
+
+
+    box-shadow:
+
+
+    0 10px 25px rgba(13,110,253,.3);
+
+
+
+}
+
+
+
+
+
+.sidebar-menu a.active{
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #0d6efd,
+
+        #4da3ff
+
+    );
+
+
+
+    color:white;
+
+
+
+    box-shadow:
+
+
+    0 12px 30px rgba(13,110,253,.35);
+
+
+
+}
+
+
+
+
+
+.icon{
+
+
+    width:30px;
+
+
+    text-align:center;
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   MAIN CONTENT AREA
+===================================================== */
+
+
+.admin-box{
+
+
+    margin-left:285px;
+
+
+    width:calc(100% - 285px);
+
+
+    padding:40px;
+
+
+
+    animation:
+
+
+    fadeIn .8s ease;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   PAGE TITLE
+===================================================== */
+
+
+.admin-box h1{
+
+
+    text-align:center;
+
+
+
+    margin:35px 0;
+
+
+
+    font-family:'Cinzel',serif;
+
+
+
+    font-size:38px;
+
+
+
+    color:#0d6efd;
+
+
+
+    text-shadow:
+
+
+    0 0 20px rgba(13,110,253,.25);
+
+
+
+}
+
+
+
+
+.admin-box h2{
+
+
+    font-size:26px;
+
+
+    margin-bottom:25px;
+
+
+    color:#333;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   MESSAGE STATISTICS CARDS
+===================================================== */
+
+
+.message-stats{
+
+
+    display:grid;
+
+
+
+    grid-template-columns:
+
+    repeat(4,1fr);
+
+
+
+    gap:22px;
+
+
+
+    margin:30px 0 45px;
+
+
+}
+
+
+
+
+
+.message-card{
+
+
+    position:relative;
+
+
+
+    overflow:hidden;
+
+
+
+    padding:25px;
+
+
+
+    border-radius:22px;
+
+
+
+    display:flex;
+
+
+
+    align-items:center;
+
+
+
+    gap:20px;
+
+
+
+    background:
+
+
+    rgba(255,255,255,.65);
+
+
+
+    backdrop-filter:blur(20px);
+
+
+
+    border:
+
+
+    1px solid rgba(13,110,253,.12);
+
+
+
+    box-shadow:
+
+
+    0 15px 35px rgba(0,0,0,.08);
+
+
+
+    transition:.35s;
+
+
+
+}
+
+
+
+
+
+
+.message-card::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+
+    width:100px;
+
+
+
+    height:100px;
+
+
+
+    right:-40px;
+
+
+
+    top:-40px;
+
+
+
+    border-radius:50%;
+
+
+
+    background:
+
+
+    rgba(13,110,253,.15);
+
+
+}
+
+
+
+
+
+
+.message-card:hover{
+
+
+    transform:translateY(-8px);
+
+
+
+    box-shadow:
+
+
+    0 20px 45px rgba(13,110,253,.2);
+
+
+}
+
+
+
+
+
+
+.message-icon{
+
+
+    width:60px;
+
+
+
+    height:60px;
+
+
+
+    display:flex;
+
+
+
+    justify-content:center;
+
+
+
+    align-items:center;
+
+
+
+    border-radius:50%;
+
+
+
+    font-size:30px;
+
+
+
+    color:white;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #0d6efd,
+
+        #4da3ff
+
+    );
+
+
+
+    box-shadow:
+
+
+    0 10px 25px rgba(13,110,253,.3);
+
+
+
+}
+
+
+
+
+
+
+
+.message-card h3{
+
+
+    font-size:32px;
+
+
+    color:#0d6efd;
+
+
+}
+
+
+
+
+
+.message-card p{
+
+
+    font-size:14px;
+
+
+    color:#777;
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================================
+   SEARCH BOX
+===================================================== */
+
+
+.search-box{
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.search-box input{
+
+
+    width:350px;
+
+
+
+    padding:15px 22px;
+
+
+
+    border-radius:30px;
+
+
+
+    outline:none;
+
+
+
+    font-size:15px;
+
+
+
+    background:
+
+
+    rgba(255,255,255,.8);
+
+
+
+    border:
+
+
+    1px solid rgba(13,110,253,.2);
+
+
+
+    box-shadow:
+
+
+    0 8px 25px rgba(0,0,0,.06);
+
+
+
+    transition:.3s;
+
+
+
+}
+
+
+
+
+
+.search-box input:focus{
+
+
+    border-color:#0d6efd;
+
+
+
+    box-shadow:
+
+
+    0 0 20px rgba(13,110,253,.25);
+
+
+}
+/* =====================================================
+   CONTACT MESSAGES TABLE
+===================================================== */
+
+
+table{
+
+
+    width:100%;
+
+
+
+    border-collapse:collapse;
+
+
+
+    background:
+
+
+    rgba(255,255,255,.75);
+
+
+
+    backdrop-filter:blur(20px);
+
+
+
+    border-radius:20px;
+
+
+
+    overflow:hidden;
+
+
+
+    box-shadow:
+
+
+    0 20px 45px rgba(0,0,0,.08);
+
+
+
+}
+
+
+
+
+
+thead{
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #0d6efd,
+
+        #4da3ff
+
+    );
+
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+th{
+
+
+    padding:18px;
+
+
+
+    font-size:14px;
+
+
+
+    letter-spacing:.5px;
+
+
+}
+
+
+
+
+
+td{
+
+
+    padding:16px;
+
+
+
+    text-align:center;
+
+
+
+    color:#555;
+
+
+
+    border-bottom:
+
+
+    1px solid rgba(0,0,0,.08);
+
+
+
+}
+
+
+
+
+
+
+tbody tr{
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+tbody tr:hover{
+
+
+    background:
+
+
+    rgba(13,110,253,.08);
+
+
+
+    transform:scale(1.01);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   MESSAGE SUBJECT STYLE
+===================================================== */
+
+
+.message-subject{
+
+
+    font-weight:600;
+
+
+
+    color:#0d6efd;
+
+
+
+}
+
+
+
+
+
+.message-preview{
+
+
+    max-width:300px;
+
+
+
+    overflow:hidden;
+
+
+
+    text-overflow:ellipsis;
+
+
+
+    white-space:nowrap;
+
+
+
+    color:#666;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+
+.action-btn{
+
+
+    display:inline-flex;
+
+
+
+    align-items:center;
+
+
+
+    justify-content:center;
+
+
+
+    gap:8px;
+
+
+
+    padding:8px 18px;
+
+
+
+    border-radius:25px;
+
+
+
+    border:none;
+
+
+
+    font-size:13px;
+
+
+
+    font-weight:600;
+
+
+
+    cursor:pointer;
+
+
+
+    text-decoration:none;
+
+
+
+    transition:.35s;
+
+
+
+}
+
+
+
+
+.action-btn:hover{
+
+
+    transform:translateY(-4px);
+
+
+
+}
+
+
+
+
+
+
+
+
+/* VIEW MESSAGE BUTTON */
+
+
+.view-btn{
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #0d6efd,
+
+        #4da3ff
+
+    );
+
+
+
+    color:white;
+
+
+
+}
+
+
+
+
+.view-btn:hover{
+
+
+    box-shadow:
+
+
+    0 8px 20px rgba(13,110,253,.35);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* REPLY BUTTON */
+
+
+.reply-btn{
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #d4af37,
+
+        #f5d76e
+
+    );
+
+
+
+    color:#222;
+
+
+
+}
+
+
+
+
+
+.reply-btn:hover{
+
+
+    box-shadow:
+
+
+    0 8px 20px rgba(212,175,55,.35);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* DELETE MESSAGE BUTTON */
+
+
+.delete-btn{
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #ff4b4b,
+
+        #ff7777
+
+    );
+
+
+
+    color:white;
+
+
+
+}
+
+
+
+
+
+.delete-btn:hover{
+
+
+    box-shadow:
+
+
+    0 8px 20px rgba(255,0,0,.3);
+
+
+
+}
+
+
+/* =====================================================
+   BACK TO DASHBOARD BUTTON
+===================================================== */
+
+
+.dashboard-back-btn{
+
+
+    display:inline-flex;
+
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+
+    padding:12px 28px;
+
+
+
+    border-radius:30px;
+
+
+
+    text-decoration:none;
+
+
+
+    font-size:15px;
+
+
+
+    font-weight:600;
+
+
+
+    color:#0d6efd;
+
+
+
+    background:
+
+
+    rgba(255,255,255,.75);
+
+
+
+    border:
+
+
+    1px solid rgba(13,110,253,.25);
+
+
+
+    backdrop-filter:blur(15px);
+
+
+
+    box-shadow:
+
+
+    0 10px 25px rgba(13,110,253,.15);
+
+
+
+    transition:.35s;
+
+
+
+}
+
+
+
+
+
+
+.dashboard-back-btn:hover{
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #0d6efd,
+
+        #4da3ff
+
+    );
+
+
+
+    color:white;
+
+
+
+    transform:translateX(-5px);
+
+
+
+    box-shadow:
+
+
+    0 15px 35px rgba(13,110,253,.35);
+
+
+
+}
+
+
+
+
+
+
+.dashboard-back-btn span{
+
+
+    font-size:20px;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   MESSAGE STATUS BADGES
+===================================================== */
+
+
+.status{
+
+
+    display:inline-block;
+
+
+
+    padding:6px 15px;
+
+
+
+    border-radius:20px;
+
+
+
+    font-size:12px;
+
+
+
+    font-weight:600;
+
+
+
+}
+
+
+
+
+
+
+
+.status.new{
+
+
+    background:#e7f0ff;
+
+
+
+    color:#0d6efd;
+
+
+
+}
+
+
+
+
+
+
+
+.status.read{
+
+
+    background:#e7fff0;
+
+
+
+    color:#0a9b4f;
+
+
+
+}
+
+
+
+
+
+
+
+.status.replied{
+
+
+    background:#fff4d6;
+
+
+
+    color:#b88600;
+
+
+
+}
+
+
+
+
+
+
+
+
+.status.closed{
+
+
+    background:#ffe5e5;
+
+
+
+    color:#d00000;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   MESSAGE EMPTY STATE
+===================================================== */
+
+
+#noMessages{
+
+
+    padding:30px;
+
+
+
+    font-size:16px;
+
+
+
+    color:#777;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   CONTACT MESSAGE CARD VIEW
+===================================================== */
+
+
+.message-container{
+
+
+    display:grid;
+
+
+
+    grid-template-columns:
+
+    repeat(3,1fr);
+
+
+
+    gap:25px;
+
+
+
+}
+
+
+
+
+
+
+.message-box{
+
+
+    padding:25px;
+
+
+
+    border-radius:22px;
+
+
+
+    background:
+
+
+    rgba(255,255,255,.7);
+
+
+
+    backdrop-filter:blur(20px);
+
+
+
+    border:
+
+
+    1px solid rgba(13,110,253,.12);
+
+
+
+    box-shadow:
+
+
+    0 15px 35px rgba(0,0,0,.08);
+
+
+
+    transition:.35s;
+
+
+
+}
+
+
+
+
+
+.message-box:hover{
+
+
+    transform:translateY(-8px);
+
+
+
+    box-shadow:
+
+
+    0 20px 45px rgba(13,110,253,.25);
+
+
+
+}
+
+
+
+
+
+.message-box h3{
+
+
+    font-size:20px;
+
+
+
+    color:#0d6efd;
+
+
+
+    margin-bottom:10px;
+
+
+
+}
+
+
+
+
+
+.message-box p{
+
+
+    font-size:14px;
+
+
+
+    color:#666;
+
+
+
+    line-height:1.6;
+
+
+
+}
+/* =====================================================
+   MESSAGE VIEW MODAL
+===================================================== */
+
+
+.message-modal{
+
+
+    position:fixed;
+
+
+
+    inset:0;
+
+
+
+    display:none;
+
+
+
+    justify-content:center;
+
+
+
+    align-items:center;
+
+
+
+    background:
+
+
+    rgba(0,0,0,.25);
+
+
+
+    backdrop-filter:blur(8px);
+
+
+
+    z-index:2000;
+
+
+
+}
+
+
+
+
+
+
+.message-modal.active{
+
+
+    display:flex;
+
+
+}
+
+
+
+
+
+
+
+.message-content{
+
+
+    width:500px;
+
+
+
+    max-width:90%;
+
+
+
+    padding:35px;
+
+
+
+    border-radius:25px;
+
+
+
+    background:
+
+
+    rgba(255,255,255,.85);
+
+
+
+    backdrop-filter:blur(25px);
+
+
+
+    border:
+
+
+    1px solid rgba(255,255,255,.8);
+
+
+
+    box-shadow:
+
+
+    0 25px 70px rgba(13,110,253,.25);
+
+
+
+    position:relative;
+
+
+
+    animation:
+
+
+    modalShow .4s ease;
+
+
+
+}
+
+
+
+
+
+
+
+.message-content h2{
+
+
+    font-family:'Cinzel',serif;
+
+
+
+    color:#0d6efd;
+
+
+
+    margin-bottom:20px;
+
+
+
+    text-align:center;
+
+
+
+}
+
+
+
+
+
+
+.message-content p{
+
+
+    color:#555;
+
+
+
+    line-height:1.7;
+
+
+
+    font-size:15px;
+
+
+
+}
+
+
+
+
+
+.message-close{
+
+
+    position:absolute;
+
+
+
+    right:20px;
+
+
+
+    top:15px;
+
+
+
+    width:35px;
+
+
+
+    height:35px;
+
+
+
+    display:flex;
+
+
+
+    align-items:center;
+
+
+
+    justify-content:center;
+
+
+
+    border-radius:50%;
+
+
+
+    cursor:pointer;
+
+
+
+    font-size:20px;
+
+
+
+    background:
+
+
+    #ff4b4b;
+
+
+
+    color:white;
+
+
+
+    transition:.3s;
+
+
+
+}
+
+
+
+
+
+.message-close:hover{
+
+
+    transform:rotate(90deg);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   REPLY BOX
+===================================================== */
+
+
+.reply-box{
+
+
+    margin-top:25px;
+
+
+}
+
+
+
+
+
+.reply-box textarea{
+
+
+    width:100%;
+
+
+
+    min-height:120px;
+
+
+
+    padding:15px;
+
+
+
+    resize:none;
+
+
+
+    outline:none;
+
+
+
+    border-radius:18px;
+
+
+
+    border:
+
+
+    1px solid rgba(13,110,253,.2);
+
+
+
+    background:
+
+
+    rgba(255,255,255,.8);
+
+
+
+    font-family:'Poppins',sans-serif;
+
+
+
+    transition:.3s;
+
+
+
+}
+
+
+
+
+
+.reply-box textarea:focus{
+
+
+    border-color:#0d6efd;
+
+
+
+    box-shadow:
+
+
+    0 0 20px rgba(13,110,253,.25);
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+
+@keyframes fadeIn{
+
+
+    from{
+
+
+        opacity:0;
+
+
+        transform:translateY(20px);
+
+
+    }
+
+
+
+    to{
+
+
+        opacity:1;
+
+
+        transform:translateY(0);
+
+
+    }
+
+
+}
+
+
+
+
+
+@keyframes modalShow{
+
+
+    from{
+
+
+        opacity:0;
+
+
+        transform:scale(.85);
+
+
+    }
+
+
+
+    to{
+
+
+        opacity:1;
+
+
+        transform:scale(1);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   PREMIUM EFFECTS
+===================================================== */
+
+
+.message-card,
+.message-box,
+.message-content,
+table,
+.search-box input{
+
+
+    will-change:transform;
+
+
+}
+
+
+
+
+
+
+
+.message-card:hover,
+.message-box:hover{
+
+
+    border-color:
+
+
+    rgba(13,110,253,.35);
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+
+@media(max-width:1100px){
+
+
+
+.message-stats{
+
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+
+}
+
+
+
+.message-container{
+
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+
+}
+
+
+
+.admin-box{
+
+
+    margin-left:270px;
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+@media(max-width:768px){
+
+
+
+.admin-sidebar{
+
+
+    position:relative;
+
+
+
+    top:10px;
+
+
+
+    left:10px;
+
+
+
+    width:
+
+
+    calc(100% - 20px);
+
+
+
+    height:auto;
+
+
+
+}
+
+
+
+
+
+.admin-box{
+
+
+    margin-left:0;
+
+
+
+    width:100%;
+
+
+
+    padding:20px;
+
+
+
+}
+
+
+
+
+
+.message-stats{
+
+
+    grid-template-columns:
+
+    1fr;
+
+
+}
+
+
+
+
+
+.message-container{
+
+
+    grid-template-columns:
+
+    1fr;
+
+
+}
+
+
+
+
+
+.search-box input{
+
+
+    width:100%;
+
+
+}
+
+
+
+
+
+table{
+
+
+    display:block;
+
+
+
+    overflow-x:auto;
+
+
+
+}
+
+
+
+
+
+.admin-box h1{
+
+
+    font-size:28px;
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+@media(max-width:500px){
+
+
+
+.message-content{
+
+
+    padding:25px;
+
+
+
+}
+
+
+
+.message-content h2{
+
+
+    font-size:20px;
+
+
+}
+
+
+
+.action-btn{
+
+
+    padding:7px 12px;
+
+
+
+    font-size:12px;
+
+
+
+}
+
+
+}.phone-link,
+.whatsapp-link{
+
+text-decoration:none;
+
+font-weight:600;
+
+display:inline-block;
+
+margin:5px;
+
+}
+
+
+
+.phone-link{
+
+color:#0d6efd;
+
+}
+
+
+
+.whatsapp-link{
+
+color:#25D366;
+
+}
+
+
+
+.phone-link:hover,
+.whatsapp-link:hover{
+
+text-decoration:underline;
+
+}
