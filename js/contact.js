@@ -5,7 +5,7 @@
 
 
 const API_URL =
-"https://one4-tunes-backend-1.onrender.com";
+"https://one4-tunes-backend-1.onrender.com/api/contact";
 
 
 

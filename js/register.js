@@ -259,8 +259,7 @@ try{
 const response =
 await fetch(
 
-API_URL+
-"/api/users/register",
+"https://one4-tunes-backend-1.onrender.com/api/users/register",
 
 {
 
