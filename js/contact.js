@@ -62,7 +62,7 @@ const response =
 await fetch(
 
 API_URL+
-"/api/contact",
+"https://one4-tunes-backend-1.onrender.com/api/contact",
 
 {
 
