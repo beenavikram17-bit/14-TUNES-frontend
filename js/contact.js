@@ -14,6 +14,8 @@ document.getElementById("contactForm");
 
 
 
+if(contactForm){
+
 
 contactForm.addEventListener(
 "submit",
@@ -29,7 +31,7 @@ document.getElementById("response");
 
 
 
-const contactData={
+const contactData = {
 
 
 name:
@@ -54,6 +56,44 @@ document.getElementById("message")
 
 
 
+/* =========================
+     VALIDATION
+========================= */
+
+
+if(contactData.name===""){
+
+responseBox.innerHTML =
+"Enter your name";
+
+return;
+
+}
+
+
+
+if(contactData.phone.length !== 10){
+
+responseBox.innerHTML =
+"Enter valid phone number";
+
+return;
+
+}
+
+
+
+if(contactData.message===""){
+
+responseBox.innerHTML =
+"Enter your message";
+
+return;
+
+}
+
+
+
 
 try{
 
@@ -61,8 +101,7 @@ try{
 const response =
 await fetch(
 
-API_URL+
-"https://one4-tunes-backend-1.onrender.com/api/contact",
+API_URL,
 
 {
 
@@ -91,13 +130,17 @@ await response.json();
 
 
 
-console.log(result);
+console.log(
+"Server Response:",
+result
+);
 
 
 
 
 
 if(response.ok && result.success){
+
 
 
 localStorage.setItem(
@@ -107,7 +150,7 @@ contactData.name
 
 
 
-window.location.href=
+window.location.href =
 "contact-success.html";
 
 
@@ -116,12 +159,12 @@ window.location.href=
 else{
 
 
-responseBox.innerHTML=
+responseBox.innerHTML =
 result.message ||
 "Message Failed";
 
 
-responseBox.style.color=
+responseBox.style.color =
 "red";
 
 
@@ -136,14 +179,18 @@ responseBox.style.color=
 catch(error){
 
 
-console.log(error);
+console.log(
+"Contact Error:",
+error
+);
 
 
-responseBox.innerHTML=
+
+responseBox.innerHTML =
 "Server Connection Failed";
 
 
-responseBox.style.color=
+responseBox.style.color =
 "red";
 
 
@@ -152,3 +199,7 @@ responseBox.style.color=
 
 
 });
+
+
+
+}
